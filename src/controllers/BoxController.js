@@ -16,7 +16,7 @@ class BoxController {
   }
 
   async listAll(req, res) {
-    const box = await Box.find({}).populate({
+    const box = await Box.find({}, null, { sort: { createdAt: -1 }}).populate({
       path: 'files',
       options: { sort: { createdAt: -1 } },
     });
